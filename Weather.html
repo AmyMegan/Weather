@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://kit.fontawesome.com/c0db1f0969.js" crossorigin="anonymous"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="src/styles.css">
+  <title>Weather Forcast</title>
+</head>
+
+<body>
+  <div class="holder">
+    <div class="container">
+
+
+
+      <form id="search-form">
+        <input type="text" id="inputData" placeholder="Enter City" autofocus="on" size="50" px />
+        <button type="submit" class="btn btn-info">🔎</button> <button type="button" class="btn btn-Current"
+          id="currentLocationButton">📍</button>
+      </form>
+
+      <h2 id="currentCity">
+
+
+      </h2>
+      <ul>
+        <li id="currentTime" class="time">
+
+        </li>
+      </ul>
+      <div class="upper">
+        <div class="upper">
+          <h1 div="current">
+            <br>
+            <img></img>
+            <span id="currentNo">
+              <span>°C</span>
+            </span>
+            <p id="weatherNow"></p>
+          </h1>
+        </div>
+
+        <li class="info">
+          <img src="https://img.icons8.com/color/50/000000/hygrometer.png" alt="humidity" width="50px">
+
+          <span id="humidity"></span>
+
+        </li>
+
+        <li class="info2">
+          <img src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_41-512.png" alt="wind"
+            width="40px">
+          <span id="windSpeed"></span>
+        </li>
+
+
+        <div class="row">
+          <div class="col">
+
+            Thurs
+            <div>
+
+
+              <img>❄️</img>
+
+              <p class="temp">
+                1°C / 5°C
+              </p>
+
+            </div>
+          </div>
+
+          <div class="col">
+            Fri
+            <div>
+              <img>☀️</img>
+              <p class="temp">
+                1°C / -4°C
+              </p>
+            </div>
+          </div>
+
+          <div class="col">
+            Sat
+            <div>
+              <img>☁️</img>
+              <p class="temp">
+                1°C / 0°C
+              </p>
+            </div>
+          </div>
+
+          <div class="col">
+            Sun
+            <div>
+              <img>☁️</img>
+              <p class="temp">
+                4°C / 3°C
+              </p>
+            </div>
+          </div>
+
+          <div class="col">
+            Mon
+            <div>
+              <img>☁️</img>
+              <p class="temp">
+                8°C / 7°C
+              </p>
+            </div>
+          </div>
+          <script src="src/index.js"> </script>
+</body>
+
+</html>
