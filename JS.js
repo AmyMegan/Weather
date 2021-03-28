@@ -24,11 +24,11 @@ function formatDate(date) {
 }
 
 function displayWeatherCondition(response) {
-  //console.log();
   document.querySelector("#currentCity").innerHTML = response.data.name;
   document.querySelector("#currentNo").innerHTML = Math.round(
-    response.data.main.temp
-  );
+    response.data.main.temp);
+    iconElement.setAttribute("src", 
+   `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#windSpeed").innerHTML = Math.round(
@@ -71,6 +71,7 @@ searchForm.addEventListener("submit", handleSubmit);
 let dateElement = document.querySelector("#currentTime");
 let currentTime = new Date();
 dateElement.innerHTML = formatDate(currentTime);
+let iconElement = document.querySelector("#icon")
 
 let currentLocationButton = document.querySelector("#currentLocationButton");
 currentLocationButton.addEventListener("click", getCurrentLocation);
