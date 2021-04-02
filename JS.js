@@ -25,14 +25,14 @@ function formatDate(date) {
 
 function displayWeatherCondition(response) {
   document.querySelector("#currentCity").innerHTML = response.data.name;
-  document.querySelector("#unitMetric").innerHTML = Math.round(
+  document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp);
     iconElement.setAttribute("src", 
    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#windSpeed").innerHTML = Math.round(
-    response.data.wind.speed
+    celsiusTemperature
   );
   document.querySelector("#weatherNow").innerHTML =
     response.data.weather[0].main;
@@ -67,10 +67,17 @@ function getCurrentLocation(event) {
 
 function displayFahrenheitTemperature(event) {
 event.preventDefault();
-let fahrenheitTemperature = (12 * 9) / 5 + 32;
-let temperatureElement = document.querySelector("#current")
-temperatureElement.innerHTML = fahrenheitTemperature;
+let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+let temperatureElement = document.querySelector("#temperature")
+temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+
+celsiusTemperature = response.data.main.temp;
+
+
 }
+
+
+let celsiusTemperature = null;
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
@@ -82,8 +89,12 @@ let iconElement = document.querySelector("#icon")
 
 let currentLocationButton = document.querySelector("#currentLocationButton");
 currentLocationButton.addEventListener("click", getCurrentLocation);
-searchCity("London");
+
+let celsiusLink = document.querySelector("#Celsius-link")
+celsiusTemperature.addEventListener("click", displayWeatherCondition)
 
 
 let fahrenheitLink = document.querySelector("#Fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+searchCity("London");
