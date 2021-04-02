@@ -67,15 +67,17 @@ function getCurrentLocation(event) {
 
 function displayFahrenheitTemperature(event) {
 event.preventDefault();
-let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
 let temperatureElement = document.querySelector("#temperature")
+let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
 temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 
 celsiusTemperature = response.data.main.temp;
-
-
 }
 
+function displayCelsiusTemperature(event) {
+  let temperatureElement = document.querySelector("#temperature")
+  temperatureElement.innerHTML  = Math.round(celsiusTemperature);
+}
 
 let celsiusTemperature = null;
 
@@ -90,11 +92,10 @@ let iconElement = document.querySelector("#icon")
 let currentLocationButton = document.querySelector("#currentLocationButton");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
-let celsiusLink = document.querySelector("#Celsius-link")
-celsiusTemperature.addEventListener("click", displayWeatherCondition)
-
-
 let fahrenheitLink = document.querySelector("#Fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#Celsius-link")
+celsiusLink.addEventListener("click", displayCelsiusTemperature)
 
 searchCity("London");

@@ -52,6 +52,24 @@ h2 {
   text-align: left;
 }
 
+.upper .active {
+  color: black;
+  cursor: default;
+}
+
+.upper .active:hover {
+  text-decoration: none;
+}
+
+.upper .active2 {
+  color: black;
+  cursor: default;
+}
+
+.upper .active2:hover {
+  text-decoration: none;
+}
+
 ul {
   list-style-type: none;
   text-align: left;
