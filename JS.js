@@ -23,6 +23,7 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+
 function displayWeatherCondition(response) {
   celsiusTemperature = response.data.main.temp;
   document.querySelector("#currentCity").innerHTML = response.data.name;
@@ -53,6 +54,32 @@ function handleSubmit(event) {
   //let cityElement = document.querySelector("#currentCity");
   //let cityInput = document.querySelector("#inputData");
   //cityElement.innerHTML = cityInput.value;
+}
+
+function displayForcast() {
+  let forcastElement = document.querySelector("#forcast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  let forcastHTML = `<div class="row">`
+  days.forEach (function (day) {
+      forcastHTML = forcastHTML +  
+          `
+          <div class="col">
+            ${day}
+            <div>
+              <img>❄️</img>
+
+              <p class="temp">
+                1°C / 5°C
+              </p>
+            </div>
+          </div>
+         `
+  });
+
+  forcastHTML = forcastHTML + `</div>`;
+  forcastElement.innerHTML = forcastHTML;
+
 }
 
 function searchLocation(position) {
@@ -100,3 +127,4 @@ let celsiusLink = document.querySelector("#Celsius-link")
 celsiusLink.addEventListener("click", displayCelsiusTemperature)
 
 searchCity("London");
+displayForcast();
