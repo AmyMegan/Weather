@@ -23,6 +23,14 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function getForcast(coordinates) {
+  console.log(coordinates);
+
+  let apiKey = `7a56de110c21e2a9b823cd23ef62bce1`;
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&unit=metric`
+  console.log(apiURL)
+  axios.get(apiURL).then(displayForcast);
+}
 
 function displayWeatherCondition(response) {
   celsiusTemperature = response.data.main.temp;
@@ -38,6 +46,10 @@ function displayWeatherCondition(response) {
   );
   document.querySelector("#weatherNow").innerHTML =
     response.data.weather[0].main;
+
+
+ getForcast(response.data.coord)
+
 }
 
 function searchCity(city) {
@@ -56,7 +68,8 @@ function handleSubmit(event) {
   //cityElement.innerHTML = cityInput.value;
 }
 
-function displayForcast() {
+function displayForcast(response) {
+  console.log(response.data.daily);
   let forcastElement = document.querySelector("#forcast");
 
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
@@ -79,8 +92,11 @@ function displayForcast() {
 
   forcastHTML = forcastHTML + `</div>`;
   forcastElement.innerHTML = forcastHTML;
-
 }
+
+
+
+
 
 function searchLocation(position) {
   let apiKey = "7a56de110c21e2a9b823cd23ef62bce1";
@@ -127,4 +143,4 @@ let celsiusLink = document.querySelector("#Celsius-link")
 celsiusLink.addEventListener("click", displayCelsiusTemperature)
 
 searchCity("London");
-displayForcast();
+//displayForcast();
