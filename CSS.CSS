@@ -7,9 +7,15 @@ body {
   padding: 20px;
 }
 
+.btn-Current {
+  background-color: #ffff;
+  border-color: #ffff;
+  padding: 15px;
+}
+
 .btn-info {
-  background-color: ;
-  border-color: #b2e1f8;
+  background-color: #ffff;
+  border-color: #ffff;
   padding: 15px;
 }
 
@@ -22,14 +28,8 @@ body {
   border-style: ;
   border-color: #a4ebf3;
   text-align: center;
-  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
   box-shadow: px;
-}
-
-.btn-Current {
-  background-color: #0dcaf0;
-  border-color: #b2e1f8;
-  padding: 15px;
 }
 
 h2 {

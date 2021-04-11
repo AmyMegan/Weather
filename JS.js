@@ -23,13 +23,23 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
+
+  return days[day]
+}
+
+
 function getForcast(coordinates) {
-  console.log(coordinates);
+  //console.log(coordinates);
 
   let apiKey = `7a56de110c21e2a9b823cd23ef62bce1`;
-  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&unit=metric`
-  console.log(apiURL)
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`
+
   axios.get(apiURL).then(displayForcast);
+  
 }
 
 function displayWeatherCondition(response) {
@@ -69,25 +79,30 @@ function handleSubmit(event) {
 }
 
 function displayForcast(response) {
-  console.log(response.data.daily);
+   let forcast = response.data.daily;
+    console.log(response.data.daily)
+
   let forcastElement = document.querySelector("#forcast");
 
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+
   let forcastHTML = `<div class="row">`
-  days.forEach (function (day) {
-      forcastHTML = forcastHTML +  
+  forcast.forEach (function (forcastDay, index) {
+    if (index < 5) {
+     forcastHTML = forcastHTML +  
           `
           <div class="col">
-            ${day}
+            ${formatDay(forcastDay.dt)} 
             <div>
-              <img>❄️</img>
+              <img src="https://openweathermap.org/img/wn/${forcastDay.weather[0].icon}@2x.png"</img>
 
               <p class="temp">
-                1°C / 5°C
+                ${Math.round(forcastDay.temp.max)} °C / ${Math.round(forcastDay.temp.min)} °C
               </p>
             </div>
           </div>
          `
+    }
+      
   });
 
   forcastHTML = forcastHTML + `</div>`;
