@@ -33,7 +33,6 @@ function formatDay(timestamp) {
 
 
 function getForcast(coordinates) {
-  //console.log(coordinates);
 
   let apiKey = `7a56de110c21e2a9b823cd23ef62bce1`;
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`
